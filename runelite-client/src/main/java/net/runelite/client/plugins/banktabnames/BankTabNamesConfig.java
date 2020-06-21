@@ -11,11 +11,18 @@ public interface BankTabNamesConfig extends Config
 {
 
 	@ConfigSection(
+		name = "Bank Tab 0",
+		description = "Settings for the first Bank tab",
+		position = 0
+	)
+	String bankTabSection0 = "bankTabSection0";
+
+	@ConfigSection(
 		name = "Bank Tab 1",
 		description = "Settings for Bank tab 1",
 		position = 1
 	)
-	String bankTabSection = "bankTabSection";
+	String bankTabSection1 = "bankTabSection";
 
 	@ConfigSection(
 		name = "Bank Tab 2",
@@ -73,26 +80,78 @@ public interface BankTabNamesConfig extends Config
 	)
 	String bankTabSection9 = "bankTabSection9";
 
+
+	// ---- BANK TAB DIVIDER ---- \\
 	@ConfigItem(
-		keyName = "bankFont",
+		keyName = "disableMainTabName",
+		name = "Keep Tab 0 Icon",
+		description = "Keeps the Infinity Symbol for the Primary tab.",
+		position = 10,
+		section = bankTabSection0
+	)
+	default boolean disableMainTabName()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		keyName = "bankFont0",
 		name = "Font",
 		description = "Select a font for each tab.",
 		position = 10,
-		section = bankTabSection
+		section = bankTabSection0
 	)
-	default TabFonts bankFont()
+	default TabFonts bankFont0()
 	{
 		return TabFonts.QUILL_8;
 	}
 
 	@ConfigItem(
-		keyName = "bankTextColor",
+		keyName = "bankTextColor0",
 		name = "Text color",
 		description = "Colors the text of your Bank Tab Names",
 		position = 11,
-		section = bankTabSection
+		section = bankTabSection0
 	)
-	default Color bankFontColor()
+	default Color bankFontColor0()
+	{
+		return Color.WHITE;
+	}
+
+	@ConfigItem(
+		keyName = "tab0Name",
+		name = "Bank Tab 0",
+		description = "The name of your bank tab.",
+		position = 12,
+		section = bankTabSection0
+	)
+	default String tab0Name()
+	{
+		return "";
+	}
+
+
+	// ---- BANK TAB DIVIDER ---- \\
+	@ConfigItem(
+		keyName = "bankFont1",
+		name = "Font",
+		description = "Select a font for each tab.",
+		position = 10,
+		section = bankTabSection1
+	)
+	default TabFonts bankFont1()
+	{
+		return TabFonts.QUILL_8;
+	}
+
+	@ConfigItem(
+		keyName = "bankTextColor1",
+		name = "Text color",
+		description = "Colors the text of your Bank Tab Names",
+		position = 11,
+		section = bankTabSection1
+	)
+	default Color bankFontColor1()
 	{
 		return Color.WHITE;
 	}
@@ -102,13 +161,15 @@ public interface BankTabNamesConfig extends Config
 		name = "Bank Tab 1",
 		description = "The name of your bank tab.",
 		position = 12,
-		section = bankTabSection
+		section = bankTabSection1
 	)
 	default String tab1Name()
 	{
 		return "";
 	}
 
+
+	// ---- BANK TAB DIVIDER ---- \\
 	@ConfigItem(
 		keyName = "bankFont2",
 		name = "Font",
@@ -145,6 +206,8 @@ public interface BankTabNamesConfig extends Config
 		return "";
 	}
 
+
+	// ---- BANK TAB DIVIDER ---- \\
 	@ConfigItem(
 		keyName = "bankFont3",
 		name = "Font",
@@ -181,6 +244,8 @@ public interface BankTabNamesConfig extends Config
 		return "";
 	}
 
+
+	// ---- BANK TAB DIVIDER ---- \\
 	@ConfigItem(
 		keyName = "bankFont4",
 		name = "Font",
@@ -217,6 +282,8 @@ public interface BankTabNamesConfig extends Config
 		return "";
 	}
 
+
+	// ---- BANK TAB DIVIDER ---- \\
 	@ConfigItem(
 		keyName = "bankFont5",
 		name = "Font",
@@ -253,6 +320,8 @@ public interface BankTabNamesConfig extends Config
 		return "";
 	}
 
+
+	// ---- BANK TAB DIVIDER ---- \\
 	@ConfigItem(
 		keyName = "bankFont6",
 		name = "Font",
@@ -289,6 +358,8 @@ public interface BankTabNamesConfig extends Config
 		return "";
 	}
 
+
+	// ---- BANK TAB DIVIDER ---- \\
 	@ConfigItem(
 		keyName = "bankFont7",
 		name = "Font",
@@ -325,6 +396,8 @@ public interface BankTabNamesConfig extends Config
 		return "";
 	}
 
+
+	// ---- BANK TAB DIVIDER ---- \\
 	@ConfigItem(
 		keyName = "bankFont8",
 		name = "Font",
@@ -361,6 +434,8 @@ public interface BankTabNamesConfig extends Config
 		return "";
 	}
 
+
+	// ---- BANK TAB DIVIDER ---- \\
 	@ConfigItem(
 		keyName = "bankFont9",
 		name = "Font",
