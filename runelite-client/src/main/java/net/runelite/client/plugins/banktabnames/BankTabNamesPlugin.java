@@ -43,7 +43,7 @@ public class BankTabNamesPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		replaceBankTabNumbers();
+		clientThread.invoke(this::replaceBankTabNumbers);
 	}
 
 	@Subscribe
@@ -82,20 +82,19 @@ public class BankTabNamesPlugin extends Plugin
 					}
 					bankTabChildren.setOpacity(0);
 					bankTabChildren.setOriginalY(0);
-					bankTabChildren.setRelativeY(0); //Deprecated, but works. For some reason setOriginalY doesn't work here.
 					bankTabChildren.setXTextAlignment(1);
 					bankTabChildren.setYTextAlignment(1);
 					bankTabChildren.setOriginalWidth(41);
 					bankTabChildren.setOriginalHeight(40);
-					bankTabChildren.setWidth(41);  //Deprecated, but works. For some reason setOriginalWidth doesn't work here.
-					bankTabChildren.setHeight(40); //Deprecated, but works. For some reason setOriginalHeight doesn't work here.
 					bankTabChildren.setOriginalHeight(40);
 					bankTabChildren.setItemId(-1);
 					bankTabChildren.setType(4);
 					bankTabChildren.setTextShadowed(true);
+					clientThread.invoke(bankTabChildren::revalidate);
 					if (widgetType != 4)
 					{
-						bankTabChildren.setRelativeX(getChildX - 3); //Deprecated, but setOriginalX doesn't work. This change only affects the "First Item in Tab" mode. They need to have their position adjusted by a few pixels.
+						bankTabChildren.setOriginalX(getChildX - 3);
+						clientThread.invoke(bankTabChildren::revalidate);
 					}
 				}
 				replaceText();
@@ -205,17 +204,14 @@ public class BankTabNamesPlugin extends Plugin
 				bankTabCont.getChild(10).setType(4);
 				bankTabCont.getChild(10).setOpacity(0);
 				bankTabCont.getChild(10).setOriginalY(0);
-				bankTabCont.getChild(10).setRelativeY(0); //Deprecated, but works. For some reason setOriginalY doesn't work here.
 				bankTabCont.getChild(10).setXTextAlignment(1);
 				bankTabCont.getChild(10).setYTextAlignment(1);
 				bankTabCont.getChild(10).setOriginalWidth(41);
 				bankTabCont.getChild(10).setOriginalHeight(40);
-				bankTabCont.getChild(10).setWidth(41);  //Deprecated, but works. For some reason setOriginalWidth doesn't work here.
-				bankTabCont.getChild(10).setHeight(40); //Deprecated, but works. For some reason setOriginalHeight doesn't work here.
 				bankTabCont.getChild(10).setText(config.tab0Name());
 				bankTabCont.getChild(10).setTextColor(config.bankFontColor0().getRGB());
 				bankTabCont.getChild(10).setFontId(config.bankFont0().tabFontId);
-				clientThread.invoke(bankTabCont::revalidate);
+				clientThread.invoke(bankTabCont.getChild(10)::revalidate);
 			}
 		}
 	}
